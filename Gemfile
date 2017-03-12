@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.3.3'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# User login
+gem 'devise'
+gem 'omniauth-google-oauth2'
 
 # deployment config
 gem 'foreman'
@@ -65,6 +69,9 @@ group :development, :test do
   gem 'fuubar'
   gem 'webmock'
   gem 'vcr'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
+  gem 'coveralls', require: false
 end
 
 group :development do
