@@ -44,7 +44,11 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  if ENV["LOG_LEVEL"].present?
+    config.log_level = ENV["LOG_LEVEL"].downcase.to_sym
+  else
+    config.log_level = :debug
+  end
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -80,6 +84,8 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  config.lograge.enabled = true
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
